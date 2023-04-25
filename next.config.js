@@ -7,6 +7,7 @@ const nextConfig = {
     domains: [
       "avatars.githubusercontent.com",
       "res.cloudinary.com",
+      "picsum.photos",
     ]
   }
 }
