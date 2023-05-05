@@ -22,10 +22,14 @@ const RegisterModal = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({ defaultValues: { name: '', email: '', password: '' } });
 
-    const onSubmit = SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
         axios.post('/api/register', data)
-            .then(() => registerModal.onClose())
+            .then(() => {
+                toast.success('Successfully Registered!')
+                registerModal.onClose();
+                loginModal.onOpen();
+            })
             .catch((error) => toast.error('Something is wrong'))
             .finally(() => { setIsLoading(false) })
     }

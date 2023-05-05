@@ -7,6 +7,7 @@ import LoginModal from './components/Modal/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import ToasterProvider from './providers/ToasterProvider'
 import RentModal from './components/Modal/RentModal'
+import SearchModal from './components/Modal/SearchModal'
 
 export const metadata = {
   title: 'Achyut',
@@ -29,6 +30,7 @@ export default async function RootLayout({
         <ClientOnly>
           <ToasterProvider />
           <RentModal />
+          <SearchModal />
           <RegisterModal />
           <LoginModal />
           <Navbar currentUser={currentUser} />
