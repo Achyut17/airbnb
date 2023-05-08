@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -15,7 +15,7 @@ import Heading from "../Heading";
 import Input from "../Inputs/Input";
 import Button from "../Button";
 
-const LoginModal = () => {
+const LoginModal: React.FC = () => {
     const router = useRouter();
 
     const registerModal = useRegisterModal();
@@ -25,7 +25,7 @@ const LoginModal = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({ defaultValues: { email: '', password: '' } });
 
-    const onSubmit = SubmitHandler<FieldValues> = (data) => {
+    const onSubmit = (data: FieldValues) => {
         setIsLoading(true)
 
         signIn('credentials', {
@@ -45,10 +45,10 @@ const LoginModal = () => {
             })
     }
 
-    const toggle = useCallback(()=>{
+    const toggle = useCallback(() => {
         loginModal.onClose();
         registerModal.onOpen();
-    },[loginModal,registerModal])
+    }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4" >
